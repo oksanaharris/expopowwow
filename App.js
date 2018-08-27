@@ -4,11 +4,22 @@ import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import { Provider } from 'react-redux';
 import { store } from './Redux/app-redux';
+import ApiKeys from './constants/ApiKeys';
+import * as firebase from 'firebase';
 
 export default class App extends React.Component {
-  state = {
-    isLoadingComplete: false,
-  };
+  constructor(props){
+    super(props);
+
+    this.state = {
+      isLoadingComplete: false
+    };
+
+    //Initializing Firebase
+    if(!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
+
+  }
+
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
