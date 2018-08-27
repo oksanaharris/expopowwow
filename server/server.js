@@ -4,6 +4,7 @@ const router = express.Router();
 const PORT = process.env.PORT || 9000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const ApiKeys = require('../constants/ApiKeys');
 
 const db = require('./models');
 const Users = db.Users;
@@ -56,6 +57,14 @@ app.use('/api', apiRouter);
 //   req.logout();
 //   res.json({loggedout: true});
 // });
+
+app.use(require('forest-express-sequelize').init({
+  modelsDir: __dirname + '/models',
+  envSecret: ApiKeys.ForestConfig.envSecret,
+  authSecret: ApiKeys.ForestConfig.authSecret,
+  sequelize: require('./models').sequelize
+}));
+
 
 app.get('/', (req, res) => {
   res.sendFile('./public/index.html', {root: __dirname });
