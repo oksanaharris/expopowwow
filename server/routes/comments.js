@@ -13,7 +13,8 @@ const Sites = db.Sites;
 const Users = db.Users;
 
 const AWS = require('aws-sdk');
-const AWS_CONFIG = require('../config/aws.config.json');
+// const AWS_CONFIG = require('../config/aws.config.json');
+const AWS_CONFIG = {};
 const AWS_ACCESS_KEY = AWS_CONFIG.AwsAccessKeyId;
 const AWS_SECRET = AWS_CONFIG.AwsSecretAccessKey;
 const AWS_REGION = AWS_CONFIG.region;

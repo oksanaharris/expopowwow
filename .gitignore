@@ -1,3 +1,4 @@
 node_modules/**/*
 .expo/**/*
 constants/ApiKeys.js
+server/ForestConfig.json

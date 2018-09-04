@@ -9,54 +9,69 @@ import SettingsScreen from '../screens/SettingsScreen';
 import TestScreen from '../screens/TestScreen';
 import ArtGallery from '../screens/ArtGallery';
 
-const HomeStack = createStackNavigator({
-  Home: ArtGallery,
+const GalleryStack = createStackNavigator({
+  Gallery: ArtGallery,
 });
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+GalleryStack.navigationOptions = {
+  tabBarLabel: 'Murals',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-images${focused ? '' : '-outline'}`
+          : 'md-images'
       }
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const MapStack = createStackNavigator({
+  Map: LinksScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+MapStack.navigationOptions = {
+  tabBarLabel: 'Map',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={Platform.OS === 'ios' ? `ios-navigate${focused ? '' : '-outline'}` : 'md-navigate'}
     />
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const ArtistsStack = createStackNavigator({
+  Artists: SettingsScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ArtistsStack.navigationOptions = {
+  tabBarLabel: 'Artists',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+      name={Platform.OS === 'ios' ? `ios-brush${focused ? '' : '-outline'}` : 'md-brush'}
+    />
+  ),
+};
+
+const CommunityStack = createStackNavigator({
+  Community: SettingsScreen,
+});
+
+CommunityStack.navigationOptions = {
+  tabBarLabel: 'Community',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-people${focused ? '' : '-outline'}` : 'md-people'}
     />
   ),
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  GalleryStack,
+  MapStack,
+  ArtistsStack,
+  CommunityStack
 });

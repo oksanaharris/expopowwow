@@ -19,6 +19,7 @@
     "expo": "29.0.0",
     "express": "^4.16.3",
     "firebase": "^5.4.1",
+    "forest-express-sequelize": "^2.14.1",
     "method-override": "^3.0.0",
     "pg": "^7.4.3",
     "querystring": "^0.2.0",
