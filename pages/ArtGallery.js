@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
 import { connect } from 'react-redux';
 import {loadArtworks} from '../Redux/actions/artworks';
@@ -12,7 +12,7 @@ import Artwork from '../components/Artwork.component.js'
 
 userId = 1;
 
-class ArtGallery extends React.PureComponent {
+class ArtGallery extends Component {
   /* ***********************************************************
   * STEP 1
   * This is an array of objects with the properties you desire
@@ -87,11 +87,28 @@ class ArtGallery extends React.PureComponent {
     }
 
     return (
-      <View style={styles.row}>
-        <Artwork src={item.url} title={item.title} artist={item.Artist.name} starIcon={starIcon} handleStarClick={this.handleStarClick}></Artwork>
-      </View>
+        <Artwork
+          src={item.url}
+          title={item.title}
+          artist={item.Artist.name}
+          starIcon={starIcon}
+          handleStarClick={this.handleStarClick}
+          id={item.id}
+          onPressItem={this._onPressItem}>
+        </Artwork>
     )
   }
+
+  _onPressItem = (id: string) => {
+    // updater functions are preferred for transactional updates
+    // this.setState((state) => {
+    //   // copy the map rather than modifying state.
+    //   const selected = new Map(state.selected);
+    //   selected.set(id, !selected.get(id)); // toggle
+    //   return {selected};
+    // });
+    console.log('_onPressItem method activated on PARENT');
+  };
 
   /* ***********************************************************
   * STEP 3
@@ -152,11 +169,15 @@ class ArtGallery extends React.PureComponent {
 
     return (
       <View style={styles.container}>
+        <View style={styles.row}>
+          <Artwork src={'http://powwowhawaii.com/wp-content/uploads/2016/03/pwh2016-Prime.jpg'} title={'Beautiful Title'} artist={'Donkey Kong'} starIcon={'ios-star'} handleStarClick={this.handleStarClick}></Artwork>
+        </View>
         <FlatList
           contentContainerStyle={styles.listContent}
           data={artworks}
-          renderItem={this.renderRow}
+          extraData={this.state}
           keyExtractor={this.keyExtractor}
+          renderItem={this.renderRow}
           initialNumToRender={this.oneScreensWorth}
           ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
@@ -190,3 +211,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtGallery)
+
+//<View style={styles.row}>*/
+//      </View>

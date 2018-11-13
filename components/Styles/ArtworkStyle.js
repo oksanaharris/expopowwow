@@ -18,6 +18,7 @@ export default StyleSheet.create({
   infoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: Colors.transparentLightGrey,
     position: 'relative',
     height: 50,

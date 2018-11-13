@@ -3,11 +3,11 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import TestScreen from '../screens/TestScreen';
-import ArtGallery from '../screens/ArtGallery';
+import HomeScreen from '../pages/HomeScreen';
+import LinksScreen from '../pages/LinksScreen';
+import SettingsScreen from '../pages/SettingsScreen';
+import TestScreen from '../pages/TestScreen';
+import ArtGallery from '../pages/ArtGallery';
 
 const GalleryStack = createStackNavigator({
   Gallery: ArtGallery,
